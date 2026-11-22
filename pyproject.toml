@@ -1,0 +1,203 @@
+[build-system]
+requires = ["setuptools>=77.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tblinc"
+version = "0.1.0"
+description = "High-level Python AI & Standalone MTV/MVC Web framework (25 modular AI models across Chat, Vision, Object Detection, Diffusion Images, Video, ASR, TTS, Music, Embeddings, Summarization, Gradient Boosting, RAG + 12-module Web framework with ORM, Auto-Admin, API Keys, Token Quotas, Auth, Forms, Templates) with CUDA, Intel XPU, and CPU support."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11,<3.15"
+authors = [
+    {name = "tblinc810", email = "tblinc810@gmail.com"},
+]
+keywords = [
+    "ai",
+    "machine-learning",
+    "deep-learning",
+    "web-framework",
+    "orm",
+    "admin-panel",
+    "mtv",
+    "mvc",
+    "llm",
+    "vlm",
+    "diffusion",
+    "rag",
+    "vision",
+    "video",
+    "audio",
+    "tts",
+    "time-series",
+    "anomaly-detection",
+    "pytorch",
+    "tensorflow",
+    "keras",
+    "jax",
+    "cuda",
+    "intel-xpu",
+    "openvino",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Typing :: Typed",
+]
+
+# Core runtime (12-module MTV/MVC Web framework + 25 modular AI models + API Keys/Quotas + CLI)
+# has zero external dependencies (100% Python stdlib; not Django, not Flask, not FastAPI).
+# Install optional AI/ML stacks via pip as needed:
+#   pip install -e .
+#   pip install -e ".[torch,llm,vision]"
+# For PyTorch CUDA / Intel XPU / CPU wheels, pass --extra-index-url:
+#   pip install -e ".[torch,cuda]" --extra-index-url https://download.pytorch.org/whl/cu128
+#   pip install -e ".[torch,xpu]"  --extra-index-url https://download.pytorch.org/whl/xpu
+#   pip install -e ".[torch]"      --extra-index-url https://download.pytorch.org/whl/cpu
+dependencies = []
+
+[project.optional-dependencies]
+# Deep Learning frameworks
+torch = [
+    "torch>=2.4",
+    "torchvision>=0.19",
+    "torchaudio>=2.4",
+    "safetensors>=0.4",
+    "onnx>=1.16",
+]
+tensorflow = [
+    "tensorflow>=2.18.0rc0",
+    "tensorflow[and-cuda]>=2.18.0rc0",
+    "keras>=3.5",
+]
+jax = [
+    "jax>=0.4.35",
+    "keras>=3.5",
+]
+
+# AI Modality stacks (matching the 25 built-in AI models)
+llm = [
+    "transformers>=4.46",
+    "diffusers>=0.31",
+    "accelerate>=1.0",
+    "peft>=0.13",
+    "trl>=0.12",
+    "datasets>=3.0",
+    "tokenizers>=0.20",
+    "huggingface-hub>=0.26",
+    "sentencepiece>=0.2",
+    "sentence-transformers>=3.2",
+]
+vision = [
+    "ultralytics>=8.3",
+    "timm>=1.0",
+    "opencv-python>=4.10",
+    "pillow>=10.4",
+]
+video = [
+    "opencv-python>=4.10",
+]
+audio = [
+    "librosa>=0.10",
+    "soundfile>=0.12",
+    "faster-whisper>=1.0",
+]
+tts = [
+    "coqui-tts>=0.25",
+]
+tabular = [
+    "numpy>=1.26",
+    "scipy>=1.14",
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "xgboost>=2.1",
+    "lightgbm>=4.5",
+    "catboost>=1.2.7",
+]
+rag = [
+    "langchain>=0.3",
+    "llama-index>=0.11",
+    "chromadb>=0.5",
+    "faiss-cpu>=1.9",
+    "qdrant-client>=1.12",
+    "tiktoken>=0.8",
+]
+ai-clients = [
+    "openai>=1.52",
+    "anthropic>=0.37",
+    "google-genai>=1.0",
+    "litellm>=1.50",
+]
+
+# Hardware accelerator stacks (mutually exclusive: pick cuda OR xpu)
+cuda = [
+    "tensorflow[and-cuda]>=2.18.0rc0",
+    "jax[cuda12]>=0.4.35",
+    "bitsandbytes>=0.44",
+    "onnxruntime-gpu>=1.19",
+]
+xpu = [
+    "optimum-intel>=1.20",
+    "openvino>=2024.4",
+]
+all = [
+    "torch>=2.4",
+    "torchvision>=0.19",
+    "torchaudio>=2.4",
+    "safetensors>=0.4",
+    "onnx>=1.16",
+    "tensorflow>=2.18.0rc0",
+    "tensorflow[and-cuda]>=2.18.0rc0",
+    "keras>=3.5",
+    "jax>=0.4.35",
+    "jax[cuda12]>=0.4.35",
+    "bitsandbytes>=0.44",
+    "onnxruntime-gpu>=1.19",
+    "transformers>=4.46",
+    "diffusers>=0.31",
+    "accelerate>=1.0",
+    "peft>=0.13",
+    "trl>=0.12",
+    "datasets>=3.0",
+    "tokenizers>=0.20",
+    "huggingface-hub>=0.26",
+    "sentencepiece>=0.2",
+    "sentence-transformers>=3.2",
+    "ultralytics>=8.3",
+    "timm>=1.0",
+    "opencv-python>=4.10",
+    "pillow>=10.4",
+    "librosa>=0.10",
+    "soundfile>=0.12",
+    "numpy>=1.26",
+    "scipy>=1.14",
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "xgboost>=2.1",
+    "lightgbm>=4.5",
+    "langchain>=0.3",
+    "qdrant-client>=1.12",
+    "tiktoken>=0.8",
+    "openai>=1.52",
+    "anthropic>=0.37",
+    "google-genai>=1.0",
+    "litellm>=1.50",
+]
+
+[project.scripts]
+tblinc = "tblinc_open_source.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["tblinc*", "tblinc_open_source*"]
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
