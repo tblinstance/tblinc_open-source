@@ -195,6 +195,18 @@ all = [
 [project.scripts]
 tblinc = "tblinc_open_source.cli:main"
 
+[tool.poetry]
+name = "tblinc"
+version = "0.1.0"
+description = "High-level Python AI & Standalone MTV/MVC Web framework (25 modular AI models + 12-module Web framework with ORM, Auto-Admin, API Keys, Token Quotas, Auth, Forms, Templates) with CUDA, Intel XPU, and CPU support."
+authors = ["tblinc810 <tblinc810@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "tblinc", from = "src" },
+    { include = "tblinc_open_source", from = "src" },
+]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["tblinc*", "tblinc_open_source*"]
